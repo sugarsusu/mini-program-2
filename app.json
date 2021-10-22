@@ -1,0 +1,19 @@
+{
+  "pages":[
+    "pages/demo02/demo02",
+    "pages/index/index",
+    "pages/img/img",
+    "pages/mine/mine",
+    "pages/demo01/demo01",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#0094ff",
+    "navigationBarTitleText": "demo02",
+    "navigationBarTextStyle":"white"
+  },
+
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

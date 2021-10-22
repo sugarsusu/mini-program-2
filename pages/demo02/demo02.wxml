@@ -1,0 +1,61 @@
+<!--pages/demo02/demo02.wxml-->
+<view>pages/demo02/demo02.wxml</view>
+<text>0</text>
+<text>2</text>
+<view>{{msg}}</view>
+<view>
+    <checkbox checked="{{ischecked}}" />
+</view>
+<!-- 
+1、wx:for-item "循环项对名称"
+2、wx:key="唯一的值" 用来提高列表循环的性能
+    2.1 wx:key 绑定一个普通的字符串的时候，那么这个字符串的名称肯定是循环数组 中的对象的 唯一属性
+    2.2 wx:key = "*this" 就表示 你的数组是一个普通的数组，*this 表示是循环项
+    
+    
+    -->
+    
+<view
+    wx:for="{{list}}"
+    wx:for-item="item"
+    wx:for-index="index"
+    wx:key="id"
+>
+{{item.name}}
+</view>
+<foot
+ wx:if="{{!isLoading && resultCart.totalDicNum}}"
+ totalFee="{{resultCart.originTotalFee}}" 
+ memberFee="{{resultCart.totalFee}}" 
+ bindonClickBtnLf="toMenu" 
+ bindonClickBtnRt="toOrder" 
+ btnLfText="继续点餐" 
+ btnRtText="去下单" />
+<button 
+ wx:if="{{phoneOpenType && showPhoneDialogCount<3}}" 
+ open-type="getPhoneNumber" 
+ bindgetphonenumber="getPhoneNumber" 
+ class="foot-phone-number" />
+<number-selection 
+ isShowNumberSelection="{{isShowNumberSelection && resultCart.totalDicNum}}"
+ bindcancel="hideNumberSelection"
+ bindok="chooseNumber"
+ num="{{resultCart.people}}" />
+<dialog 
+ wx:if="{{isShowDialog}}"
+ title="{{dialogTitle}}"
+ content="{{dialogContent}}"
+ okText="{{dialogOkText}}"
+ cancelText="{{dialogCancelText}}"
+ bindok="dialogOk"
+ bindcancel="dialogCancel" />
+<mp-dialog title="您点的菜品需要再次确认" show="{{orderPortionReminds.length > 0 && isShowMpDialog}}" bindbuttontap="tapDialogButton" buttons="{{[{text: '我再考虑'}, {text: '确认下单'}]}}">
+    <view wx:for="{{orderPortionReminds}}" wx:key="key" class="order-remind-wrap">
+        <view class="order-remind-content">
+            <view>{{item.name}}</view>
+            <view class="order-remind-num">点了{{item.num}}份</view>
+        </view>
+        <text class="right-prompt">点多啦</text>
+    </view>
+</mp-dialog>
+
