@@ -1,10 +1,22 @@
 /* pages/home/home.wxss */
-view{
+view {
   color: var(--themeColor);
 }
-.home-swiper swiper{
+.home-swiper swiper {
   width: 750rpx;
 }
-.home-swiper image{
+.home-swiper image {
+  width: 100%;
+}
+.home-cate {
+  display: flex;
+  padding: 20rpx 50rpx;
+  justify-content: space-between;
+}
+.home-cate navigator {
+  width: 100rpx;
+  height: 109rpx;
+}
+.home-cate image {
   width: 100%;
 }

@@ -20,4 +20,14 @@
       </swiper-item>
     </swiper>
   </view>
+
+  <!-- 分类导航 -->
+  <view class="home-cate">
+    <navigator
+      wx:key="name"
+      wx:for="{{cateList}}"
+    >
+      <image mode="widthFix" src="{{item.image_src}}"/>
+    </navigator>
+  </view>
 </view>

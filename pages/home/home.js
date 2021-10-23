@@ -1,4 +1,5 @@
 // pages/home/home.js
+import { request } from "../../request/index"
 Page({
 
   /**
@@ -7,7 +8,7 @@ Page({
   data: {
     // 轮播图数组
     swiperList: [],
-
+    cateList: []
   },
 
   /**
@@ -17,27 +18,52 @@ Page({
     // 进入页面即刻加载
     // 1 发送异步请求获取轮播图
     // 注意异步请求回调地狱  优化：可以使用es6的 promise
-    wx.request({
+    
+    // wx.request({
+    //   url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
+    //   header: {'content-type':'application/json'},
+    //   method: 'GET',
+    //   dataType: 'json',
+    //   //返回数据默认形式
+    //   // responseType: 'text',
+    //   success: (result) => {
+    //     this.setData({
+    //       swiperList: result.data.message
+    //     })
+    //     console.log('result',result)
+    //   },
+    //   fail: () => {},
+    //   // 成功或者失败均会调用的函数
+    //   complete: () => {}
+    // });
+    this.getSwiperList()
+    this.getCateList()
+  },
+
+  // 获取轮播图数据
+  getSwiperList(){
+    // 封装promise
+    request({
       url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/swiperdata',
-      header: {'content-type':'application/json'},
-      method: 'GET',
-      dataType: 'json',
-      //返回数据默认形式
-      // responseType: 'text',
-      success: (result) => {
+    })
+      .then(result => {
         this.setData({
           swiperList: result.data.message
         })
-        console.log('result',result)
-      },
-      fail: () => {},
-      // 成功或者失败均会调用的函数
-      complete: () => {}
-    });
-      
-
+      })
   },
-
+  // 获取 分类导航菜单数据
+  getCateList(){
+    // 封装promise
+    request({
+      url: 'https://api-hmugo-web.itheima.net/api/public/v1/home/catitems'
+    })
+      .then(result => {
+        this.setData({
+          cateList: result.data.message
+        })
+      })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
