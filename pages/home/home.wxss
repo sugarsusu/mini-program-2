@@ -2,3 +2,9 @@
 view{
   color: var(--themeColor);
 }
+.home-swiper swiper{
+  width: 750rpx;
+}
+.home-swiper image{
+  width: 100%;
+}

@@ -1,4 +1,23 @@
 <!--pages/home/home.wxml-->
 <view>
   <SearchInput></SearchInput>
+  <!-- 轮播图 -->
+  <view class="home-swiper">
+    <swiper
+      autoplay
+      circular
+      indicator-dots
+    >
+      <swiper-item
+        wx:for="{{swiperList}}"
+        wx:key="goods_id"
+      >
+      <navigator>
+        <image mode="widthFix" 
+          src="{{item.image_src}}"
+        />
+      </navigator>
+      </swiper-item>
+    </swiper>
+  </view>
 </view>
