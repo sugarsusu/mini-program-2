@@ -1,2 +1,10 @@
 <!--pages/category/category.wxml-->
-<text>pages/category/category.wxml</text>
+<view class="cates">
+  <SearchInput></SearchInput>
+  <view class="cates_content">
+    <!-- 左侧菜单 -->
+    <scroll-view class="left_menu"></scroll-view>
+    <!-- 右侧菜单 -->
+    <scroll-view class="right_content"></scroll-view>
+  </view>
+</view>

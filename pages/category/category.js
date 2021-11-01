@@ -1,3 +1,5 @@
+import { request } from "../../request/index"
+
 // pages/category/category.js
 Page({
 
@@ -5,14 +7,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    //左侧的菜单数据
+    leftMenuList: [],
+    // 右侧的数据
+    rightContent:[],
+    // 接口数据
+    cates: []
   },
+  
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getCates()
+  },
 
+  getCates() {
+    request({
+      url: 'https://api-hmugo-web.itheima.net/api/public/v1/categories'
+    })
+      .then(res => {
+        console.log(res)
+        this.cates = res.data.message
+
+        // 构造左侧菜单分类数据
+        let leftMenuList = this.cates.map(v=>v.cat_name)
+        this.setData({
+          leftMenuList
+        })
+  
+      })
   },
 
   /**

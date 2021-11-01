@@ -30,4 +30,34 @@
       <image mode="widthFix" src="{{item.image_src}}"/>
     </navigator>
   </view>
+
+  <!-- 楼层 -->
+  <view class="home-floor">
+    <view class="floor-group"
+      wx:for="{{floorList}}"
+      wx:key="floor_title"
+      wx:for-item="itemOne"
+      wx:for-index="indexOne"
+    >
+    <!-- 标题 -->
+    <view class="floor-title">
+      <image mode="widthFix" src="{{itemOne.floor_title.image_src}}" />
+    </view>
+    <!-- 内容 -->
+    <view class="floor-content">
+      <navigator
+        class="floor-content-navigator"
+        wx:for="{{itemOne.product_list}}"
+        wx:for-item="itemTwo"
+        wx:for-index="indexTwo"
+        wx:key="name"
+      >
+        <image
+          src="{{itemTwo.image_src}}"
+          mode="{{indexTwo === 0 ? 'widthFix' : 'scaleToFill'}}"  
+        />
+      </navigator>
+    </view>
+    </view>
+  </view>
 </view>

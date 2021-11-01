@@ -17,16 +17,43 @@ view {
   display: flex;
   padding: 20rpx 50rpx;
   justify-content: space-between;
+
   navigator {
 
     // flex: 1;
     width: 100rpx;
     height: 109rpx;
-    
+
   }
 
   image {
     width: 100%;
     // height: 73%;
+  }
+}
+.home-floor{
+  padding: 10rpx 2rpx;
+}
+.floor-content-navigator {
+  overflow: hidden;
+  float: left;
+  width: 33.33%;
+  
+  // 后四个图片
+  &:nth-last-child(-n+4) {
+    height: (33.33vw * 386 / 232 / 2)-0.8;
+    
+  }
+  &:nth-child(2),
+  &:nth-child(3) {
+    border-bottom: 10rpx solid #fff;
+  }
+  image {
+    // display: block;
+    width: 100%;
+    height: 100%;
+    &:nth-last-child(-n+4) {
+      padding-left: 10rpx;
+    }  
   }
 }
